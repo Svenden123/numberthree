@@ -1,0 +1,20 @@
+<?php
+function longestLength( $string ) {
+    $subStrLast = "";
+    $subStr = "";
+    for($i=0; ""!==$char=@$string[$i]; $i++) {
+        if ( false === $pos = strpos($subStr, $char) ) {
+            $subStr .= $char;
+        } else {
+            if ( strlen($subStr) > strlen($subStrLast) ) {
+                $subStrLast = $subStr;
+            }
+            $subStr = substr($subStr, $pos + 1) . $char;
+        }
+    }
+    if ( strlen($subStr) < strlen($subStrLast) ) {
+        $subStr = $subStrLast;
+    }
+     return  strlen($subStr);
+} 
+?>
